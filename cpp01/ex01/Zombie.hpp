@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/25 01:52:52 by abendrih          #+#    #+#             */
-/*   Updated: 2025/12/25 22:04:32 by abendrih         ###   ########.fr       */
+/*   Created: 2025/12/25 22:09:28 by abendrih          #+#    #+#             */
+/*   Updated: 2025/12/25 23:21:06 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <iostream>
+#include <string>
 
-int main()
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
+
+class Zombie
 {
-    Zombie patien1("foo");
-    Zombie *clone = newZombie("ZOO");
-    randomChump("choo");
+    private:
+        std::string _name;
+    
+    public:
+        Zombie();
+        ~Zombie();
+        void announce(int n);    
+        void setName(std::string name);    
+};
 
-    patien1.announce();
-    clone->announce();
-    delete clone;
-    return (0);
-}
+Zombie* zombieHorde( int N, std::string name );
+#endif

@@ -5,21 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/25 01:52:52 by abendrih          #+#    #+#             */
-/*   Updated: 2025/12/25 22:04:32 by abendrih         ###   ########.fr       */
+/*   Created: 2025/12/25 22:07:27 by abendrih          #+#    #+#             */
+/*   Updated: 2025/12/25 23:21:06 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main()
+int main ()
 {
-    Zombie patien1("foo");
-    Zombie *clone = newZombie("ZOO");
-    randomChump("choo");
-
-    patien1.announce();
-    clone->announce();
-    delete clone;
-    return (0);
+    int n = 5;
+    Zombie *horde = zombieHorde(n, "Doriane");
+    delete[] horde;
 }
+

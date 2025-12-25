@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/25 01:52:52 by abendrih          #+#    #+#             */
-/*   Updated: 2025/12/25 22:04:32 by abendrih         ###   ########.fr       */
+/*   Created: 2025/12/25 22:14:43 by abendrih          #+#    #+#             */
+/*   Updated: 2025/12/25 23:26:20 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int main()
+Zombie::Zombie()
 {
-    Zombie patien1("foo");
-    Zombie *clone = newZombie("ZOO");
-    randomChump("choo");
-
-    patien1.announce();
-    clone->announce();
-    delete clone;
-    return (0);
+    std::cout <<"creation"<< std::endl;
 }
+Zombie::~Zombie()
+{
+    std::cout <<"destruction"<< std::endl;
+}
+void Zombie::setName(std::string name)
+{
+    _name = name;
+}
+
+void Zombie::announce(int n)
+{
+    std::cout<<"Hello Ladys le me indtroduce my self as "<< _name<< n<<std::endl;
+}  
