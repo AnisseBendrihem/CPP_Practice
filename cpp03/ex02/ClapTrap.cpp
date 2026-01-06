@@ -5,44 +5,44 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/06 13:50:32 by abendrih          #+#    #+#             */
-/*   Updated: 2026/01/06 19:23:27 by abendrih         ###   ########.fr       */
+/*   Created: 2026/01/06 15:00:00 by abendrih          #+#    #+#             */
+/*   Updated: 2026/01/06 19:51:51 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
-
 ClapTrap::ClapTrap() : _Name("default"), _Hp(10), _Mp(10), _Ad(0)
 {
     std::cout << "ClapTrap default constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap &copie_wanted)
+ClapTrap::ClapTrap(const ClapTrap &copieWanted)
 {
     std::cout << "ClapTrap copy constructor called" << std::endl;
-    *this = copie_wanted;
+    *this = copieWanted;
 }
 
-ClapTrap& ClapTrap::operator=(const ClapTrap &copie_wanted)
+ClapTrap& ClapTrap::operator=(const ClapTrap &copieWanted)
 {
     std::cout << "ClapTrap assignment operator called" << std::endl;
-    if (this != &copie_wanted)
+    if (this != &copieWanted)
     {
-        _Name = copie_wanted._Name;
-        _Hp = copie_wanted._Hp;
-        _Mp = copie_wanted._Mp;
-        _Ad = copie_wanted._Ad;
+        _Name = copieWanted._Name;
+        _Hp = copieWanted._Hp;
+        _Mp = copieWanted._Mp;
+        _Ad = copieWanted._Ad;
     }
     return *this;
 }
 
 ClapTrap::ClapTrap(std::string newName) : _Name(newName), _Hp(10), _Mp(10), _Ad(0)
 {
-    std::cout<<"Initialise " <<_Name <<std::endl;
+    std::cout << "Initialise " << _Name << std::endl;
 }
+
 ClapTrap::~ClapTrap()
 {
-    std::cout<<"Destruction " <<_Name <<std::endl;
+    std::cout << "Destruction " << _Name << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target)
@@ -60,6 +60,7 @@ void ClapTrap::attack(const std::string& target)
     _Mp--;
     std::cout << "ClapTrap " << _Name << " attacks " << target << ", causing " << _Ad << " points of damage!" << std::endl;
 }
+
 void ClapTrap::takeDamage(unsigned int amount)
 {
     if (_Hp <= 0)
@@ -71,7 +72,8 @@ void ClapTrap::takeDamage(unsigned int amount)
     if (_Hp < 0)
         _Hp = 0;
     std::cout << _Name << " lost " << amount << " Hp, he has now " << _Hp << " left" << std::endl;
-} 
+}
+
 void ClapTrap::beRepaired(unsigned int amount)
 {
     if (_Hp <= 0)

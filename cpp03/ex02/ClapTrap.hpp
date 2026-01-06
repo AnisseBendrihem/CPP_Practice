@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/06 13:50:29 by abendrih          #+#    #+#             */
-/*   Updated: 2026/01/06 17:56:06 by abendrih         ###   ########.fr       */
+/*   Created: 2026/01/06 15:00:00 by abendrih          #+#    #+#             */
+/*   Updated: 2026/01/06 19:51:51 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 class ClapTrap
 {
-    private:
+    protected:
         std::string _Name;
         int _Hp;
         int _Mp;
@@ -27,8 +27,8 @@ class ClapTrap
     public:
         ClapTrap();
         ClapTrap(std::string newName);
-        ClapTrap(const ClapTrap &copie_wanted);
-        ClapTrap& operator=(const ClapTrap &copie_wanted);
+        ClapTrap(const ClapTrap &copieWanted);
+        ClapTrap& operator=(const ClapTrap &copieWanted);
         ~ClapTrap();
     
         void attack(const std::string& target);
