@@ -6,7 +6,7 @@
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 18:45:00 by abendrih          #+#    #+#             */
-/*   Updated: 2026/01/26 01:43:29 by abendrih         ###   ########.fr       */
+/*   Updated: 2026/01/26 02:21:51 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ public:
 	PmergeMe &operator=(const PmergeMe &src);
 	~PmergeMe();
 
-	void	parse(int ac, char **av);
+	void	parse_andfill(int ac, char **av);
 	void	printTime(double tVec, double tDeq) const;
 
 	std::vector<int>	&getVec();
@@ -72,6 +72,7 @@ void PmergeMe::print(const std::string &prefix, const T &c) const
 		std::cout << " " << *it;
 	std::cout << std::endl;
 }
+
 template <typename T>
 double PmergeMe::sort(T &c)
 {

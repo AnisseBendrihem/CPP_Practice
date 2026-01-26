@@ -6,7 +6,7 @@
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 18:45:02 by abendrih          #+#    #+#             */
-/*   Updated: 2026/01/26 01:37:11 by abendrih         ###   ########.fr       */
+/*   Updated: 2026/01/26 02:29:16 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,42 +70,47 @@ int PmergeMe::_toInt(const std::string &s) const
 // JACOBSTHAL
 // ============================================================================
 
+// Génère l'ordre d'insertion basé sur la suite de Jacobsthal
+// n = nombre d'éléments "pend" à insérer
 std::vector<size_t> PmergeMe::_getJacobOrder(size_t n) const
 {
-	std::vector<size_t> order;
-	if (n <= 1)
+	std::vector<size_t> order;          // le contenaire a return
+	if (n <= 1)                       
 		return order;
 
-	size_t prev = 1;
-	size_t curr = 1;
+	size_t prev = 1;                    // J(k-1) : nombre de Jacobsthal précédent
+	size_t curr = 1;                    // J(k)   : nombre de Jacobsthal actuel
 
+	// Parcourt les "groupes" définis par Jacobsthal : 1, 1, 3, 5, 11, 21...
 	while (curr < n)
 	{
-		size_t lim = curr;
-		if (curr > n)
+		size_t lim = curr;              // borne haute du groupe actuel
+		if (curr > n)                   // si dépasse n, on cap à n
 			lim = n;
+		// Ajoute les indices du groupe en ordre DÉCROISSANT (de lim à prev+1)
 		for (size_t i = lim; i > prev; --i)
-			order.push_back(i - 1);
+			order.push_back(i - 1);     // -1 car indices commencent à 0
 
-		size_t next = curr + 2 * prev;
-		prev = curr;
-		curr = next;
+		size_t next = curr + 2 * prev;  // formule Jacobsthal : J(k+1) = J(k) + 2*J(k-1)
+		prev = curr;                    // décale : prev devient curr
+		curr = next;                    // décale : curr devient next
 	}
 
+	// Ajoute les indices restants après le dernier groupe de Jacobsthal
 	if (prev < n)
 	{
 		for (size_t i = n; i > prev; --i)
 			order.push_back(i - 1);
 	}
 
-	return order;
+	return order;                    
 }
 
 // ============================================================================
 // PARSING
 // ============================================================================
 
-void PmergeMe::parse(int ac, char **av)
+void PmergeMe::parse_andfill(int ac, char **av)
 {
 	std::set<int> seen;
 

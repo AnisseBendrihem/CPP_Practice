@@ -5,35 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/25 18:45:04 by abendrih          #+#    #+#             */
-/*   Updated: 2026/01/26 02:21:20 by abendrih         ###   ########.fr       */
+/*   Created: 2026/01/25 16:17:33 by abendrih          #+#    #+#             */
+/*   Updated: 2026/01/25 18:27:34 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PmergeMe.hpp"
+#include "RPN.hpp"
 
-int main(int ac, char **av)
+int main(int argc, char **argv)
 {
-	if (ac < 2)
+	if (argc != 2)
 	{
-		std::cerr << "Error" << std::endl;
+		std::cerr << "Error: usage: ./RPN \"expression\"" << std::endl;
 		return 1;
 	}
 
+	RPN rpn;
+
 	try
 	{
-		PmergeMe pm;
-
-		pm.parse_andfill(ac, av);
-		pm.print("Before:", pm.getVec());
-
-		double tVec = pm.sort(pm.getVec());
-		double tDeq = pm.sort(pm.getDeq());
-
-		pm.print("After:", pm.getVec());
-		pm.printTime(tVec, tDeq);
+		int result = rpn.motherCalcul(argv[1]);
+		std::cout << result << std::endl;
 	}
-	catch (std::exception &e)
+	catch (const std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 		return 1;

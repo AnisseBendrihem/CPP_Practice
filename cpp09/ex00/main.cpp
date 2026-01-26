@@ -5,39 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/25 18:45:04 by abendrih          #+#    #+#             */
-/*   Updated: 2026/01/26 02:21:20 by abendrih         ###   ########.fr       */
+/*   Created: 2026/01/24 23:31:10 by abendrih          #+#    #+#             */
+/*   Updated: 2026/01/25 18:30:37 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PmergeMe.hpp"
+#include "BitcoinExchange.hpp"
 
-int main(int ac, char **av)
-{
-	if (ac < 2)
-	{
-		std::cerr << "Error" << std::endl;
-		return 1;
-	}
-
-	try
-	{
-		PmergeMe pm;
-
-		pm.parse_andfill(ac, av);
-		pm.print("Before:", pm.getVec());
-
-		double tVec = pm.sort(pm.getVec());
-		double tDeq = pm.sort(pm.getDeq());
-
-		pm.print("After:", pm.getVec());
-		pm.printTime(tVec, tDeq);
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;
-		return 1;
-	}
-
-	return 0;
+int main(int argc, char **argv) {
+    if (argc != 2) {
+        std::cerr << "Error: could not open file." << std::endl;
+        return 1;
+    }
+    
+    BitcoinExchange btc;
+    
+    btc.loadCsv("data.csv");
+    
+    btc.processTxt(argv[1]);
+    
+    return 0;
 }
